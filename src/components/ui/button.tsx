@@ -9,18 +9,25 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
+        default: "bg-primary text-primary-foreground hover:bg-primary-hover shadow-sm",
         destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input bg-background hover:bg-accent hover:text-accent-foreground",
+        outline: "border border-border bg-background hover:bg-accent hover:text-accent-foreground",
         secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "text-primary underline-offset-4 hover:underline",
+        health: "bg-gradient-hero text-white hover:opacity-90 shadow-lg border-0",
+        chat: "bg-chat-user text-chat-user-foreground hover:bg-chat-user/90 rounded-full",
+        voice: "bg-accent text-accent-foreground hover:bg-accent/80 rounded-full shadow-md",
+        emergency: "bg-health-danger text-white hover:bg-health-danger/90 shadow-lg animate-pulse-health",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        default: "h-12 px-6 py-3 text-base",
+        sm: "h-10 px-4 py-2 text-sm",
+        lg: "h-14 px-8 py-4 text-lg",
+        xl: "h-16 px-10 py-5 text-xl",
+        icon: "h-12 w-12",
+        "icon-sm": "h-10 w-10",
+        "icon-lg": "h-14 w-14",
       },
     },
     defaultVariants: {
