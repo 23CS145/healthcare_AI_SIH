@@ -17,7 +17,7 @@ export const HealthMascot = ({ size = "md", className = "", animate = true }: He
     <div className={`${sizeClasses[size]} ${animate ? "animate-float" : ""} ${className}`}>
       <img
         src={mascotImage}
-        alt="स्वास्थ्य सहायक - आपका विश्वसनीय स्वास्थ्य मित्र"
+        alt="Health Assistant - Your Trusted Health Companion"
         className="w-full h-full object-contain"
       />
     </div>

@@ -20,7 +20,7 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "नमस्ते! मैं आपका स्वास्थ्य सहायक हूँ। मैं आपको टीकाकरण, बीमारियों की जानकारी और स्वास्थ्य सुझाव दे सकता हूँ। आप मुझसे हिंदी, अंग्रेजी या अपनी स्थानीय भाषा में बात कर सकते हैं। आज मैं आपकी कैसे मदद कर सकता हूँ?",
+      text: "Hello! I'm your Health Assistant. I can help you with vaccination schedules, disease information, and health advice. You can speak to me in Hindi, English, or your local language. How can I help you today?",
       isUser: false,
       timestamp: new Date(),
     },
@@ -45,7 +45,7 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
     setTimeout(() => {
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: "धन्यवाद आपके प्रश्न के लिए। मैं आपकी जानकारी को समझ रहा हूँ और जल्द ही उत्तर दूंगा। कृपया प्रतीक्षा करें...",
+        text: "Thank you for your question. I'm processing your information and will respond shortly. Please wait...",
         isUser: false,
         timestamp: new Date(),
       };
@@ -74,8 +74,8 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
       <div className="flex items-center gap-4 p-4 bg-background border-b border-border">
         <HealthMascot size="sm" />
         <div className="flex-1">
-          <h2 className="text-xl font-semibold text-foreground">स्वास्थ्य सहायक</h2>
-          <p className="text-sm text-muted-foreground">आपका विश्वसनीय स्वास्थ्य मित्र</p>
+          <h2 className="text-xl font-semibold text-foreground">Health Assistant</h2>
+          <p className="text-sm text-muted-foreground">Your Trusted Health Companion</p>
         </div>
         {onClose && (
           <Button variant="ghost" size="icon-sm" onClick={onClose}>
@@ -124,7 +124,7 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             onKeyPress={(e) => e.key === "Enter" && sendMessage()}
-            placeholder="अपना प्रश्न यहाँ लिखें या माइक दबाएं..."
+            placeholder="Type your question here or press the microphone..."
             className="flex-1"
           />
           <Button
@@ -139,7 +139,7 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
           </Button>
         </div>
         <p className="text-xs text-muted-foreground mt-2 text-center">
-          हिंदी, English, या अपनी भाषा में बात करें
+          Speak in Hindi, English, or your local language
         </p>
       </div>
     </div>
