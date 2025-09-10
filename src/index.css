@@ -9,34 +9,34 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Health & Nature inspired palette */
-    --background: 150 30% 98%;
-    --foreground: 160 15% 15%;
+    /* Professional medical theme */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 8%;
 
     --card: 0 0% 100%;
-    --card-foreground: 160 15% 15%;
+    --card-foreground: 215 25% 8%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 160 15% 15%;
+    --popover-foreground: 215 25% 8%;
 
-    /* Calming health green as primary */
-    --primary: 150 60% 45%;
-    --primary-foreground: 0 0% 100%;
-    --primary-light: 150 50% 85%;
-    --primary-hover: 150 60% 40%;
+    /* Primary brand colors - Professional medical blue */
+    --primary: 210 80% 50%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 210 80% 95%;
+    --primary-hover: 210 80% 45%;
 
-    /* Warm, trustworthy secondary */
-    --secondary: 25 25% 88%;
-    --secondary-foreground: 160 15% 25%;
+    /* Secondary colors - Sophisticated gray */
+    --secondary: 215 15% 92%;
+    --secondary-foreground: 215 25% 20%;
 
     /* Soft muted tones */
-    --muted: 150 20% 94%;
-    --muted-foreground: 160 8% 45%;
+    --muted: 215 15% 94%;
+    --muted-foreground: 215 8% 45%;
 
-    /* Trust-building blue accent */
-    --accent: 210 60% 65%;
-    --accent-foreground: 0 0% 100%;
-    --accent-light: 210 40% 90%;
+    /* Accent colors - Healthcare teal */
+    --accent: 175 70% 55%;
+    --accent-foreground: 0 0% 98%;
+    --accent-light: 175 70% 95%;
 
     /* Health warning colors */
     --destructive: 0 75% 55%;
@@ -56,14 +56,14 @@ All colors MUST be HSL.
     --chat-bot-foreground: 160 15% 15%;
 
     /* Health status colors */
-    --health-good: 150 70% 45%;
-    --health-caution: 45 85% 55%;
-    --health-danger: 0 75% 55%;
+    --health-good: 140 70% 45%;
+    --health-caution: 38 95% 55%;
+    --health-danger: 0 80% 60%;
 
-    /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(150 60% 45%), hsl(210 60% 65%));
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%), hsl(150 20% 98%));
-    --gradient-chat: linear-gradient(135deg, hsl(150 30% 98%), hsl(210 40% 98%));
+    /* Professional gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(210 80% 50%), hsl(175 70% 55%));
+    --gradient-card: linear-gradient(135deg, hsl(210 20% 99%), hsl(175 30% 98%));
+    --gradient-chat: linear-gradient(180deg, hsl(210 20% 98%), hsl(175 20% 96%));
 
     --radius: 0.5rem;
 

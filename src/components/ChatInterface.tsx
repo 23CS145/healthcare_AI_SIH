@@ -29,6 +29,33 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
   const [isListening, setIsListening] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  const generateBotResponse = (userText: string): string => {
+    const responses = [
+      "Based on your symptoms, I recommend consulting a healthcare professional. In the meantime, ensure adequate rest and hydration.",
+      "For vaccination schedules, children should receive their first dose at birth. Would you like specific information about any particular vaccine?",
+      "Common signs of fever include elevated body temperature, chills, and fatigue. Please monitor your temperature and seek medical care if it exceeds 101°F.",
+      "Preventive healthcare includes regular hand washing, balanced nutrition, adequate sleep, and staying up-to-date with vaccinations.",
+      "If you're experiencing persistent symptoms, it's important to visit your nearest healthcare center. Would you like help finding one?",
+      "For digestive issues, try eating smaller meals, staying hydrated, and avoiding spicy foods. Contact a doctor if symptoms persist.",
+      "Regular health check-ups are crucial for early detection. Adults should have annual check-ups, while children need more frequent monitoring.",
+      "Emergency warning signs include difficulty breathing, chest pain, severe headache, or loss of consciousness. Seek immediate medical attention."
+    ];
+    
+    // Simple keyword matching for more relevant responses
+    const lowerText = userText.toLowerCase();
+    if (lowerText.includes('fever') || lowerText.includes('temperature')) {
+      return responses[2];
+    } else if (lowerText.includes('vaccine') || lowerText.includes('vaccination')) {
+      return responses[1];
+    } else if (lowerText.includes('stomach') || lowerText.includes('digestion')) {
+      return responses[5];
+    } else if (lowerText.includes('emergency') || lowerText.includes('urgent')) {
+      return responses[7];
+    }
+    
+    return responses[Math.floor(Math.random() * responses.length)];
+  };
+
   const sendMessage = () => {
     if (!inputText.trim()) return;
 
@@ -41,23 +68,45 @@ export const ChatInterface = ({ onClose }: ChatInterfaceProps) => {
 
     setMessages(prev => [...prev, userMessage]);
     
-    // Simulate bot response
+    // Generate contextual bot response
     setTimeout(() => {
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: "Thank you for your question. I'm processing your information and will respond shortly. Please wait...",
+        text: generateBotResponse(inputText),
         isUser: false,
         timestamp: new Date(),
       };
       setMessages(prev => [...prev, botResponse]);
-    }, 1000);
+    }, 1500);
 
     setInputText("");
   };
 
   const toggleListening = () => {
-    setIsListening(!isListening);
-    // Voice recognition logic would go here
+    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
+      const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
+      const recognition = new SpeechRecognition();
+      
+      if (!isListening) {
+        recognition.lang = 'en-IN';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+        
+        recognition.onstart = () => setIsListening(true);
+        recognition.onend = () => setIsListening(false);
+        recognition.onresult = (event: any) => {
+          const transcript = event.results[0][0].transcript;
+          setInputText(transcript);
+        };
+        
+        recognition.start();
+      } else {
+        recognition.stop && recognition.stop();
+        setIsListening(false);
+      }
+    } else {
+      alert('Speech recognition not supported in this browser');
+    }
   };
 
   const speakMessage = (text: string) => {

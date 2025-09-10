@@ -118,21 +118,36 @@ export const Dashboard = () => {
             Quick Help
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <Button variant="outline" size="lg" className="h-auto py-4 flex-col">
-              <Phone className="w-6 h-6 mb-2 text-primary" />
-              <span className="text-sm">Emergency Numbers</span>
-              <span className="text-xs text-muted-foreground">108 / 102</span>
-            </Button>
-            <Button variant="outline" size="lg" className="h-auto py-4 flex-col">
-              <Heart className="w-6 h-6 mb-2 text-health-good" />
-              <span className="text-sm">Health Check</span>
-              <span className="text-xs text-muted-foreground">Symptom Checker</span>
-            </Button>
-            <Button variant="outline" size="lg" className="h-auto py-4 flex-col">
-              <Calendar className="w-6 h-6 mb-2 text-accent" />
-              <span className="text-sm">Nearest Center</span>
-              <span className="text-xs text-muted-foreground">Health Services</span>
-            </Button>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="h-auto py-4 flex-col hover:bg-destructive/10 transition-colors"
+            onClick={() => window.open('tel:108', '_self')}
+          >
+            <Phone className="w-6 h-6 mb-2 text-destructive" />
+            <span className="text-sm font-medium">Emergency</span>
+            <span className="text-xs text-muted-foreground">Call 108 / 102</span>
+          </Button>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="h-auto py-4 flex-col hover:bg-health-good/10 transition-colors"
+            onClick={() => setShowChat(true)}
+          >
+            <Heart className="w-6 h-6 mb-2 text-health-good" />
+            <span className="text-sm font-medium">Symptom Check</span>
+            <span className="text-xs text-muted-foreground">AI Diagnosis</span>
+          </Button>
+          <Button 
+            variant="outline" 
+            size="lg" 
+            className="h-auto py-4 flex-col hover:bg-accent/10 transition-colors"
+            onClick={() => window.open('https://maps.google.com/?q=health+center+near+me', '_blank')}
+          >
+            <Calendar className="w-6 h-6 mb-2 text-accent" />
+            <span className="text-sm font-medium">Find Centers</span>
+            <span className="text-xs text-muted-foreground">Near You</span>
+          </Button>
           </div>
         </div>
 
